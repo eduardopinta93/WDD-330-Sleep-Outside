@@ -29,13 +29,8 @@ function renderCartContents() {
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     productList.innerHTML = htmlItems.join("");
 
-    
-    const total = cartItems.reduce(
-      (sum, item) => sum + item.FinalPrice,
-      0
-    );
+    const total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
 
-    
     cartFooter.classList.remove("hide");
     cartTotalElement.innerHTML = `Total: $${total.toFixed(2)}`;
   } else {

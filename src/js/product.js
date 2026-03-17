@@ -8,7 +8,6 @@ const dataSource = new ProductData("tents");
 const product = new ProductDetails(productId, dataSource);
 product.init();
 
-
 //import { getParam } from "./utils.mjs";
 //import ProductData from "./ProductData.mjs";
 
@@ -18,6 +17,5 @@ product.init();
 //console.log(dataSource.findProductById(productId));
 
 //dataSource.findProductById(productId).then((product) => {
-  //console.log(product);
+//console.log(product);
 //});
-
