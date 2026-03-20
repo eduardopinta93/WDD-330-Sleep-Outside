@@ -241,6 +241,44 @@ button {
   grid-column: 3;
 }
 
+.product-card__pricing {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: baseline;
+}
+
+.price {
+  font-weight: 600;
+  color: #1f2933;
+}
+
+.price--retail {
+  text-decoration: line-through;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.price--final {
+  color: #b43422;
+  font-size: 1.05rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.badge--sale {
+  background: #fde68a;
+  color: #92400e;
+  border: 1px solid #f59e0b;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
