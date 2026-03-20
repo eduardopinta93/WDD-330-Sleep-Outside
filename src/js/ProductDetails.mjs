@@ -51,4 +51,9 @@ export default class ProductDetails{
       <button id="addToCart">Add to Cart</button>
     </section>`;
     }
+
+
+
+
+
 }
