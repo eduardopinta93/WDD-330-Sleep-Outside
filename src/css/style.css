@@ -131,6 +131,27 @@ button {
   fill: gray;
 }
 
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #b43422;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+  display: none; /* Hidden by default, shown when count > 0 */
+}
+
+.cart-count.is-visible {
+  display: inline-block;
+}
+
 /* End cart icon styles */
 
 .mission {
@@ -239,6 +260,44 @@ button {
 .cart-card__price {
   grid-row: 2;
   grid-column: 3;
+}
+
+.product-card__pricing {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: baseline;
+}
+
+.price {
+  font-weight: 600;
+  color: #1f2933;
+}
+
+.price--retail {
+  text-decoration: line-through;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.price--final {
+  color: #b43422;
+  font-size: 1.05rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.badge--sale {
+  background: #fde68a;
+  color: #92400e;
+  border: 1px solid #f59e0b;
 }
 
 @media screen and (min-width: 500px) {

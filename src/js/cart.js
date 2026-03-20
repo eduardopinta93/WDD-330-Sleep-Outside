@@ -14,6 +14,7 @@
 // This improves UX and prevents crashes.
 
 import { getLocalStorage } from "./utils.mjs";
+import { updateCartCount } from "./cartIndicator.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 
 // Renders cart items dynamically and controls the visibility of the cart total section.
@@ -59,4 +60,5 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+updateCartCount();
 loadHeaderFooter();

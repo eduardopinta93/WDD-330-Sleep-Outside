@@ -21,6 +21,7 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+// function to get the parameters from the URL when requested
 
 export function getParam(param) {
   const queryString = window.location.search;
@@ -28,6 +29,14 @@ export function getParam(param) {
   return urlParams.get(param);
 }
 
+export function renderListWithTemplate(templateFn, parentElement, list, position = "beforeend", clear = true) {
+  if (!parentElement || !templateFn || !Array.isArray(list)) return;
+  if (clear) parentElement.innerHTML = "";
+  list.forEach((item) => {
+    const html = templateFn(item);
+    parentElement.insertAdjacentHTML(position, html);
+  });
+}
 export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false,) {
   if (clear) {
     parentElement.innerHTML = "";
