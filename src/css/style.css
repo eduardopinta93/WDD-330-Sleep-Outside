@@ -270,3 +270,36 @@ Currently used in the cart page to hide the cart total section when the cart is 
 .hide {
   display: none;
 }
+
+
+.categories {
+  padding: 2rem 1rem;
+}
+
+.categories h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.category-list a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.category-list img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.category-list h3 {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+}
