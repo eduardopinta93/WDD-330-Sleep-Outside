@@ -33,44 +33,8 @@ export default class ProductDetails {
       this.addProductToCart();
     });
   }
+
   renderProductDetails() {
-
-export default class ProductDetails{
-    constructor(productId, dataSource){
-        this.productId = productId;
-        this.dataSource = dataSource;
-        this.product = {};
-    }
-    async init() {
-
-    // 1 buscar producto
-    const product = await this.dataSource.findProductById(this.productId);
-    // 2 guardar producto
-    this.product = product;
-    // 3 renderizar html
-    this.renderProductDetails();
-    // 4 configurar boton
-    this.setupAddToCartButton();
-    }
-
-    addProductToCart() {
-        let cart = getLocalStorage("so-cart") || [];
-        cart.push(this.product);
-        setLocalStorage("so-cart", cart);
-    }
-
-    addToCartHandler() {
-    this.addProductToCart();
-    }
-
-    setupAddToCartButton() {
-        document
-            .getElementById("addToCart")
-            .addEventListener("click", () => {
-                this.addProductToCart();
-        });
-    }
-    renderProductDetails() {
     const main = document.querySelector("main");
 
     main.innerHTML = `
@@ -89,10 +53,4 @@ export default class ProductDetails{
 }
 
 updateCartCount();
-    }
 
-
-
-
-
-}
