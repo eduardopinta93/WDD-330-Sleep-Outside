@@ -77,9 +77,10 @@ export default class ShoppingCart {
 // rendering logic, following the same pattern used in ProductList.
 
   cartItemTemplate(item) {
+    const image = item.Images?.PrimaryMedium || item.Image;
     return `<li class="cart-card divider">
       <a href="#" class="cart-card__image">
-        <img src="${item.Images.PrimaryMedium}" alt="${item.Name}" />
+        <img src="${image}" alt="${item.Name}" />
       </a>
       <a href="#">
         <h2 class="card__name">${item.Name}</h2>
