@@ -42,7 +42,7 @@ export default class ProductDetails{
     <section class="product-detail">
       <h3>${this.product.Brand.Name}</h3>
       <h2>${this.product.NameWithoutBrand}</h2>
-      <img src="${this.product.Image}" alt="${this.product.Name}">
+      <img src="${this.product.Images.PrimaryLarge}" alt="${this.product.Name}">
       <p class="product-card__price">$${this.product.FinalPrice}</p>
       <p class="product__color">${this.product.Colors[0].ColorName}</p>
       <div class="product__description">
