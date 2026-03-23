@@ -303,3 +303,63 @@ Currently used in the cart page to hide the cart total section when the cart is 
   margin-top: 0.75rem;
   font-size: 1rem;
 }
+
+
+
+/*  correct product images size from trello task */
+
+main {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 1rem;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.mission p {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.product-card {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 600px) {
+  .product-card {
+    flex: 1 1 45%;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .product-card {
+    flex: 1 1 30%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  header {
+    padding: 1rem 2rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .categories {
+    padding: 3rem 2rem;
+  }
+}
