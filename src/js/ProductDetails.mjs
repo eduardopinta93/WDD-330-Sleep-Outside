@@ -18,24 +18,22 @@ export default class ProductDetails {
     this.setupAddToCartButton();
   }
 
-    addProductToCart() {
-        let cart = getLocalStorage("so-cart") || [];
+  addProductToCart() {
+    let cart = getLocalStorage("so-cart") || [];
 
-        const existingProduct = cart.find(
-            (item) => item.Id === this.product.Id
-        );
+    const existingProduct = cart.find((item) => item.Id === this.product.Id);
 
-        if (existingProduct) {
-            existingProduct.quantity = (existingProduct.quantity || 1) + 1;
-        } else {
-            cart.push({
-            ...this.product,
-            quantity: 1
-            });
-        }
-
-        setLocalStorage("so-cart", cart);
+    if (existingProduct) {
+      existingProduct.quantity = (existingProduct.quantity || 1) + 1;
+    } else {
+      cart.push({
+        ...this.product,
+        quantity: 1,
+      });
     }
+
+    setLocalStorage("so-cart", cart);
+  }
 
   addToCartHandler() {
     this.addProductToCart();
@@ -54,7 +52,7 @@ export default class ProductDetails {
     <section class="product-detail">
       <h3>${this.product.Brand.Name}</h3>
       <h2>${this.product.NameWithoutBrand}</h2>
-      <img src="${this.product.Images.PrimaryLarge}" alt="${this.product.Name}">
+         <img src="${this.product.Images?.PrimaryLarge ?? this.product.Image ?? "fallback.jpg"}" alt="${this.product.Name}">
       <p class="product-card__price">$${this.product.FinalPrice}</p>
       <p class="product__color">${this.product.Colors[0].ColorName}</p>
       <div class="product__description">
