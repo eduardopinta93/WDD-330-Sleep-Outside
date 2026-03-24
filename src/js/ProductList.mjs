@@ -11,7 +11,7 @@ export default class ProductList {
 
   async init() {
     try {
-      const list = await this.dataSource.getData();
+      const list = await this.dataSource.getData(this.category);
       this.renderList(list);
     } catch (error) {
       console.error("Error loading product data:", error);
@@ -46,8 +46,8 @@ function productCardTemplate(product) {
     : null;
 
   return `<li class="product-card${isDiscounted ? " product-card--sale" : ""}">
-        <a href="product_pages/?product=${product.Id}">
-            <img src="${product.Image}" alt="Image of ${product.NameWithoutBrand}">
+        <a href="../product_pages/index.html?product=${product.Id}">
+            <img src="${product.Images.PrimaryMedium}" alt="${product.Name}">
             <h2 class="card__brand">${product.Brand?.Name ?? ""}</h2>
             <h3 class="card__name">${product.NameWithoutBrand}</h3>
             <div class="product-card__pricing">${isDiscounted ? `<span class="price price--retail">$${Number(product.SuggestedRetailPrice).toFixed(2)}</span> ` : ""}
