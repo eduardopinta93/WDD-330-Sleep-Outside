@@ -60,6 +60,16 @@ export default class ShoppingCart {
         true
       );
 
+          // Attach listeners to remove buttons
+    this.listElement.querySelectorAll(".remove").forEach(button => {
+      button.addEventListener("click", () => {
+        const id = button.dataset.id;
+        this.removeItem(id);
+      });
+    });
+
+
+
       const total = cartItems.reduce(
         (sum, item) => sum + Number(item.FinalPrice) * (item.quantity || 1),
         0
@@ -88,6 +98,15 @@ export default class ShoppingCart {
       <p class="cart-card__color">${item.Colors[0].ColorName}</p>
       <p class="cart-card__quantity">qty: ${item.quantity || 1}</p>
       <p class="cart-card__price">$${item.FinalPrice}</p>
-    </li>`;
+      <span class="remove" data-id="${item.Id}">X</span> 
+    </li>`;  
+  }
+
+
+  removeItem(id) {
+    let cartItems = getLocalStorage("so-cart") || [];
+    cartItems = cartItems.filter(item => item.Id !== id);
+    localStorage.setItem("so-cart", JSON.stringify(cartItems));
+    this.renderCart(cartItems); 
   }
 }
