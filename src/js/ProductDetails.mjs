@@ -1,22 +1,22 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { updateCartCount } from "./cartIndicator.mjs";
 
-export default class ProductDetails{
-    constructor(productId, dataSource){
-        this.productId = productId;
-        this.dataSource = dataSource;
-        this.product = {};
-    }
-    async init() {
-
-    // 1 buscar producto
+export default class ProductDetails {
+  constructor(productId, dataSource) {
+    this.productId = productId;
+    this.dataSource = dataSource;
+    this.product = {};
+  }
+  async init() {
+    // 1 search the product
     const product = await this.dataSource.findProductById(this.productId);
-    // 2 guardar producto
+    // 2 save the product
     this.product = product;
-    // 3 renderizar html
+    // 3 render HTML
     this.renderProductDetails();
-    // 4 configurar boton
+    // 4 configure button
     this.setupAddToCartButton();
-    }
+  }
 
     addProductToCart() {
         let cart = getLocalStorage("so-cart") || [];
@@ -37,18 +37,17 @@ export default class ProductDetails{
         setLocalStorage("so-cart", cart);
     }
 
-    addToCartHandler() {
+  addToCartHandler() {
     this.addProductToCart();
-    }
+  }
 
-    setupAddToCartButton() {
-        document
-            .getElementById("addToCart")
-            .addEventListener("click", () => {
-                this.addProductToCart();
-        });
-    }
-    renderProductDetails() {
+  setupAddToCartButton() {
+    document.getElementById("addToCart").addEventListener("click", () => {
+      this.addProductToCart();
+    });
+  }
+
+  renderProductDetails() {
     const main = document.querySelector("main");
 
     main.innerHTML = `
@@ -63,5 +62,7 @@ export default class ProductDetails{
       </div>
       <button id="addToCart">Add to Cart</button>
     </section>`;
-    }
+  }
 }
+
+updateCartCount();
