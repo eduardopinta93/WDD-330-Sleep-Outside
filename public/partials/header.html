@@ -4,7 +4,13 @@
       </div>
       <div class="cart">
         <form class="search-form" action="/product_listing/index.html" method="get">
-          <input type="search" name="category" placeholder="Search products..." class="search-input"/>
+          <select name="category" class="search-input">
+            <option value="" disabled selected>Browse category...</option>
+            <option value="tents">Tents</option>
+            <option value="backpacks">Sleeping Bags</option>
+            <option value="sleeping-bags">Backpacks</option>
+            <option value="hammocks">Hammocks</option>
+          </select>
           <button type="submit" class="search-btn">Search</button>
         </form>
         <a href="/cart/index.html">
