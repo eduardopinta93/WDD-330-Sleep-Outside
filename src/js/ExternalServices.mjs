@@ -26,6 +26,7 @@ export default class ProductData {
       return data?.Result ?? [];
     }
 
+    // Fallback to local JSON if no API URL
     const response = await fetch(`/json/${category}.json`);
     if (!response.ok) return [];
     const data = await convertToJson(response);
@@ -41,6 +42,7 @@ export default class ProductData {
       return data?.Result;
     }
 
+    // Fallback: search local JSON files
     for (const category of fallbackCategories) {
       const response = await fetch(`/json/${category}.json`);
       if (!response.ok) continue;
