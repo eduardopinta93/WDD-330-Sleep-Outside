@@ -32,6 +32,34 @@ export default class ProductData {
     return Array.isArray(data) ? data : data?.Result ?? [];
   }
 
+  async searchProducts(query) {
+    const localCategories = ["tents", "backpacks", "sleeping-bags"];
+    if (baseURL) {
+      const response = await fetch(
+        `${ensureTrailingSlash(baseURL)}products/search/${encodeURIComponent(query)}`,
+      );
+      const data = await convertToJson(response);
+      return data?.Result ?? [];
+    }
+    const results = await Promise.all(
+      localCategories.map(async (cat) => {
+        const response = await fetch(`/json/${cat}.json`);
+        if (!response.ok) return [];
+        const data = await convertToJson(response);
+        return Array.isArray(data) ? data : data?.Result ?? [];
+      }),
+    );
+    const q = query.toLowerCase();
+    return results
+      .flat()
+      .filter(
+        (p) =>
+          p.Name?.toLowerCase().includes(q) ||
+          p.NameWithoutBrand?.toLowerCase().includes(q) ||
+          p.Brand?.Name?.toLowerCase().includes(q),
+      );
+  }
+
   async findProductById(id) {
     if (baseURL) {
       const response = await fetch(

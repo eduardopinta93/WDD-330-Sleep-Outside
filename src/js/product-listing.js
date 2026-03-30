@@ -4,17 +4,25 @@ import { loadHeaderFooter, getParam } from "./utils.mjs";
 
 loadHeaderFooter();
 
-const category = getParam("category") ?? "tents";
+const knownCategories = ["tents", "backpacks", "sleeping-bags"];
+const param = getParam("category") || "tents";
+const isCategory = knownCategories.includes(param);
 
-// Turn "sleeping-bags" into "Sleeping Bags" for display purposes
-const categoryLabel = category
-  .replace(/-/g, " ")
-  .replace(/\b\w/g, (c) => c.toUpperCase());
+const titleLabel = isCategory
+  ? param.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
+  : `Search: "${param}"`;
 
 const titleSpan = document.querySelector(".title");
-if (titleSpan) titleSpan.textContent = categoryLabel;
+if (titleSpan) titleSpan.textContent = titleLabel;
 
 const dataSource = new ProductData();
 const element = document.querySelector(".product-list");
-const listing = new ProductList(category, dataSource, element);
-listing.init();
+if (isCategory) {
+  const listing = new ProductList(param, dataSource, element);
+  listing.init();
+} else {
+  dataSource.searchProducts(param).then((results) => {
+    const listing = new ProductList(param, dataSource, element);
+    listing.renderList(results);
+  });
+}
