@@ -1,5 +1,5 @@
+import { updateCartCount, animateCartIcon } from "./cartIndicator.mjs";
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
-import { updateCartCount } from "./cartIndicator.mjs";
 
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -48,17 +48,17 @@ export default class ProductDetails {
   renderProductDetails() {
     const main = document.querySelector("main");
     main.innerHTML = `
-    <section class="product-detail">
-      <h3>${this.product.Brand.Name}</h3>
-      <h2>${this.product.NameWithoutBrand}</h2>
-         <img src="${this.product.Images?.PrimaryLarge ?? this.product.Image ?? "fallback.jpg"}" alt="${this.product.Name}">
-      <p class="product-card__price">$${this.product.FinalPrice}</p>
-      <p class="product__color">${this.product.Colors[0].ColorName}</p>
-      <div class="product__description">
-        ${this.product.DescriptionHtmlSimple}
-      </div>
-      <button id="addToCart">Add to Cart</button>
-    </section>`;
+  <section class="product-detail">
+    <h3>${this.product.Brand.Name}</h3>
+    <h2>${this.product.NameWithoutBrand}</h2>
+    <button id="addToCart">Add to Cart</button>
+    <img src="${this.product.Images?.PrimaryLarge ?? this.product.Image ?? "fallback.jpg"}" alt="${this.product.Name}">
+    <p class="product-card__price">$${this.product.FinalPrice}</p>
+    <p class="product__color">${this.product.Colors[0].ColorName}</p>
+    <div class="product__description">
+      ${this.product.DescriptionHtmlSimple}
+    </div>
+  </section>`;
   }
 }
 
