@@ -5,7 +5,7 @@ async function convertToJson(res) {
   try {
     return await res.json();
   } catch (err) {
-    // If the body is not JSON (e.g., 404 HTML), return an empty list to avoid runtime failures
+    
     return [];
   }
 }
