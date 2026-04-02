@@ -25,9 +25,10 @@
         
               <label for="firstName">First Name</label>
               <input type="text" id="firstName" name="fname" required />
-        
+              <span class="error-msg" id="firstName-error"></span>
               <label for="lastName">Last Name</label>
               <input type="text" id="lastName" name="lname" required />
+              <span class="error-msg" id="lastName-error"></span>
             </fieldset>
         
             <fieldset>
@@ -35,15 +36,21 @@
         
               <label for="street">Street Address</label>
               <input type="text" id="street" name="street" required />
+              <span class="error-msg" id="street-error"></span>
         
               <label for="city">City</label>
               <input type="text" id="city" name="city" required />
+              <span class="error-msg" id="city-error"></span>
+
         
               <label for="state">State</label>
               <input type="text" id="state" name="state" required />
+              <span class="error-msg" id="state-error"></span>
         
               <label for="zip">Zip Code</label>
               <input type="text" id="zip" name="zip" required />
+              <span class="error-msg" id="zip-error"></span>
+
             </fieldset>
         
             <fieldset>
@@ -51,16 +58,23 @@
         
               <label for="cardNumber">Credit Card Number</label>
               <input type="text" id="cardNumber" name="cardNumber" required />
+              <span class="error-msg" id="cardNumber-error"></span>
         
               <label for="expiration">Expiration Date</label>
               <input type="text" id="expiration" name="expiration" placeholder="MM/YY" required />
+              <span class="error-msg" id="expiration-error"></span>
         
               <label for="securityCode">Security Code</label>
               <input type="text" id="securityCode" name="code" required />
+              <span class="error-msg" id="securityCode-error"></span>
             </fieldset>
         
             <button type="submit" class="checkout-button">Checkout</button>
           </form>
+
+          <div id="form-success" class="success-msg" style="display:none;">
+            Your order has been placed successfully! Thank you for shopping with Sleep Outside.
+          </div>
         
           <aside class="order-summary">
             <h3>Order Summary</h3>
