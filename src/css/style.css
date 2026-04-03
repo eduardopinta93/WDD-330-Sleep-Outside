@@ -564,9 +564,39 @@ main {
 
 .remove {
   cursor: pointer;
-  color: red;       
+  color: red;
   font-weight: bold;
   margin-left: 10px;
+}
+
+/* Quantity adjustment buttons */
+.cart-card__quantity {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.qty-btn {
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1;
+  border: 1px solid var(--light-grey);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--dark-grey);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-btn:hover {
+  background: var(--primary-color);
+  color: #fff;
 }
 
 

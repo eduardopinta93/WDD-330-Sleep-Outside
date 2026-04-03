@@ -23,7 +23,7 @@
 // constructor → init() → render method → template method.
 
 
-import { getLocalStorage, renderListWithTemplate } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, renderListWithTemplate } from "./utils.mjs";
 
 // Receives references to key DOM elements needed to render the cart:
 // - listElement: container where cart items will be inserted
@@ -68,6 +68,15 @@ export default class ShoppingCart {
       });
     });
 
+    // Attach listeners to quantity buttons
+    this.listElement.querySelectorAll(".qty-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        const id = button.dataset.id;
+        const action = button.dataset.action;
+        this.updateQuantity(id, action);
+      });
+    });
+
 
 
       const total = cartItems.reduce(
@@ -96,7 +105,11 @@ export default class ShoppingCart {
         <h2 class="card__name">${item.Name}</h2>
       </a>
       <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-      <p class="cart-card__quantity">qty: ${item.quantity || 1}</p>
+      <p class="cart-card__quantity">
+        <button class="qty-btn" data-id="${item.Id}" data-action="decrease">-</button>
+        <span>${item.quantity || 1}</span>
+        <button class="qty-btn" data-id="${item.Id}" data-action="increase">+</button>
+      </p>
       <p class="cart-card__price">$${item.FinalPrice}</p>
       <span class="remove" data-id="${item.Id}">X</span> 
     </li>`;  
@@ -106,7 +119,30 @@ export default class ShoppingCart {
   removeItem(id) {
     let cartItems = getLocalStorage("so-cart") || [];
     cartItems = cartItems.filter(item => item.Id !== id);
-    localStorage.setItem("so-cart", JSON.stringify(cartItems));
-    this.renderCart(cartItems); 
+    setLocalStorage("so-cart", cartItems);
+    this.renderCart(cartItems);
+    if (this.onQuantityChange) this.onQuantityChange();
+  }
+
+  updateQuantity(id, action) {
+    let cartItems = getLocalStorage("so-cart") || [];
+    const item = cartItems.find(item => item.Id === id);
+    if (!item) return;
+
+    const currentQty = item.quantity || 1;
+    if (action === "increase") {
+      item.quantity = currentQty + 1;
+    } else if (action === "decrease") {
+      if (currentQty <= 1) {
+        // Remove item if quantity would go to 0
+        cartItems = cartItems.filter(i => i.Id !== id);
+      } else {
+        item.quantity = currentQty - 1;
+      }
+    }
+
+    setLocalStorage("so-cart", cartItems);
+    this.renderCart(cartItems);
+    if (this.onQuantityChange) this.onQuantityChange();
   }
 }
