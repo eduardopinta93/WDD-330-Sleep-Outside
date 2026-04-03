@@ -61,6 +61,27 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
+  initBackToTop();
+}
+
+function initBackToTop() {
+  const btn = document.createElement("button");
+  btn.id = "back-to-top";
+  btn.textContent = "\u2191";
+  btn.setAttribute("aria-label", "Back to top");
+  document.body.appendChild(btn);
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      btn.classList.add("visible");
+    } else {
+      btn.classList.remove("visible");
+    }
+  });
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 }
 
 export function alertMessage(message, scroll = true) {
