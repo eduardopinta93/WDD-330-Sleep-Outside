@@ -1,5 +1,5 @@
-import { updateCartCount, animateCartIcon } from "./cartIndicator.mjs";
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { updateCartCount } from "./cartIndicator.mjs";
+import { alertMessage, getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -34,6 +34,8 @@ export default class ProductDetails {
 
     setLocalStorage("so-cart", cart);
     updateCartCount(); // refresh badge immediately after adding to cart
+    alertMessage(`${this.product.NameWithoutBrand} has been added to your cart!`);
+    animateCartIcon();
   }
 
   setupAddToCartButton() {

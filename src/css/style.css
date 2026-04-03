@@ -416,6 +416,29 @@ button {
 .order-summary h3 { margin-top: 0;}
 .order-summary p { margin: 0.35rem 0;}
 
+/* Checkout validation */
+.error-msg {
+  color: #c0392b;
+  font-size: 0.875rem;
+  display: block;
+  margin-top: 2px;
+  min-height: 1.2em;
+}
+
+input.input-error {
+  border: 1px solid #c0392b !important;
+}
+
+.success-msg {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -558,6 +581,28 @@ main {
 
 .cart-animate .cart-icon {
   animation: cartBounce 0.8s cubic-bezier(0.25, 1.5, 0.5, 1);
+}
+
+.alert {
+  background-color: var(--primary-color);
+  color: var(--dark-grey);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.alert p {
+  margin: 0;
+  padding: 0;
+}
+
+.alert span {
+  cursor: pointer;
+  font-weight: bold;
+  padding-left: 1.2em;
 }
 
 @keyframes cartBounce {
