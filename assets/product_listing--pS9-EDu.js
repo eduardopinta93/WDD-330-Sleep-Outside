@@ -1,0 +1,1 @@
+import{l as r,b as a}from"./utils-BrQ1k2I1.js";import{P as c}from"./ExternalServices-Dm43AYjg.js";import{P as n}from"./ProductList-CPAuA8hf.js";r();const e=a("category")??"tents",s=e.replace(/-/g," ").replace(/\b\w/g,o=>o.toUpperCase()),t=document.querySelector(".title");t&&(t.textContent=s);const i=new c,l=document.querySelector(".product-list"),m=new n(e,i,l);m.init();

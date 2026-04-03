@@ -1,0 +1,1 @@
+import{g as c}from"./utils-BrQ1k2I1.js";function i(){const t=document.querySelector(".cart-count");if(!t)return;const e=(c("so-cart")||[]).reduce((o,s)=>o+(s.quantity||1),0);e>0?(t.textContent=e,t.classList.add("is-visible")):t.classList.remove("is-visible")}export{i as u};
