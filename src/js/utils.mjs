@@ -87,3 +87,37 @@ export function alertMessage(message, scroll = true) {
 
   if (scroll) window.scrollTo(0, 0);
 }
+
+
+export function showWelcomeBanner() {
+  // Check if the visitor has been here before
+  if (localStorage.getItem("so-visited")) return; // Exit if they have
+  
+  // Mark them as a returning visitor immediately
+  localStorage.setItem("so-visited", "true");
+
+  // Build the banner
+  const banner = document.createElement("div");
+  banner.classList.add("welcome-banner");
+  banner.innerHTML = `
+    <div class="welcome-banner__content">
+      <div class="welcome-banner__text">
+        <strong>🎁 New Member Giveaway</strong>
+        <p>Register for free and win a complete tent, sleeping bag, and camping gear worth <strong>$500!</strong> Ends April 30.</p>
+      </div>
+      <a href="/register/index.html" class="welcome-banner__cta">Enter Giveaway</a>
+    </div>
+    <span class="welcome-banner__close">X</span>
+  `;
+
+  // Dismiss on click of the X  
+  banner.addEventListener("click", function (e) {
+    if (e.target.classList.contains("welcome-banner__close")) {
+      this.remove();
+    }
+  });
+  
+  // Prepend to <main> so it appears at the top of the page content
+  const main = document.querySelector("main");
+  if (main) main.prepend(banner);
+}
