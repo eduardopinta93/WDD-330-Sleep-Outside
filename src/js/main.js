@@ -1,7 +1,7 @@
 import ProductData from "./ExternalServices.mjs";
 import ProductList from "./ProductList.mjs";
 import { updateCartCount } from "./cartIndicator.mjs";
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter, showWelcomeBanner } from "./utils.mjs";
 import Alert from "./Alert";
 
 const productData = new ProductData("tents");
@@ -19,6 +19,8 @@ async function init() {
 
   const alert = new Alert("/json/alerts.json");
   alert.loadAlerts();
+
+  showWelcomeBanner();
 }
 
 init();
