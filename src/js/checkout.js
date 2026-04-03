@@ -1,4 +1,4 @@
-import { loadHeaderFooter, setLocalStorage } from "./utils.mjs";
+import { alertMessage, loadHeaderFooter, setLocalStorage } from "./utils.mjs";
 import CheckoutProcess from "./CheckoutProcess.mjs";   
 
 // Validation rules for form fields
@@ -120,18 +120,12 @@ async function initCheckout() {
         
         } catch (err) {
           console.error("Checkout failed:", err);
-          const submitArea = form.querySelector(".checkout-button");
-          const existingErr = document.getElementById("submit-error");
-          if (!existingErr) {
-            const errEl = document.createElement("p");
-            errEl.id = "submit-error";
-            errEl.className = "error-msg";  
-            errEl.textContent = "There was an issue processing your order. Please try again.";
-            submitArea.insertAdjacentElement("afterend", errEl);
-          }
+          alertMessage("There was an issue processing your order. Please try again.");
+        
         } finally {
-            if (submitBtn) submitBtn.disabled = false; // re-enable the button
+          if (submitBtn) submitBtn.disabled = false; // Re-enable submit button
         }
+
     });
 }
 

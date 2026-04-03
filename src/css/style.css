@@ -583,6 +583,28 @@ main {
   animation: cartBounce 0.8s cubic-bezier(0.25, 1.5, 0.5, 1);
 }
 
+.alert {
+  background-color: var(--primary-color);
+  color: var(--dark-grey);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.alert p {
+  margin: 0;
+  padding: 0;
+}
+
+.alert span {
+  cursor: pointer;
+  font-weight: bold;
+  padding-left: 1.2em;
+}
+
 @keyframes cartBounce {
   0% {
     transform: scale(1) translateY(0);
