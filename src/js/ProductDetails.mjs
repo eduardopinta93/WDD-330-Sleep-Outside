@@ -1,5 +1,5 @@
 import { updateCartCount } from "./cartIndicator.mjs";
-import { alertMessage, getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { alertMessage, animateCartIcon, getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 export default class ProductDetails {
   constructor(productId, dataSource) {

@@ -69,6 +69,15 @@ export async function loadHeaderFooter() {
   renderWithTemplate(footerTemplate, footerElement);
 }
 
+export function animateCartIcon() {
+  const cartLink = document.querySelector(".cart-link");
+  if (!cartLink) return;
+  cartLink.classList.add("cart-animate");
+  cartLink.addEventListener("animationend", () => {
+    cartLink.classList.remove("cart-animate");
+  }, { once: true });
+}
+
 export function alertMessage(message, scroll = true) {
   // Remove any existing alert first to avoid stacking
   const existing = document.querySelector(".alert");
